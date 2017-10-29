@@ -2,11 +2,13 @@
 
 import pygame
 from sprite import Car
+from sprite import Chicken
 
 BLACK = ( 0, 0, 0)
 WHITE = ( 255, 255, 255)
 GREEN = ( 0, 255, 0)
 RED = ( 255, 0, 0)
+MCYELLOW = ( 226, 179, 9)
 
 WIDTH = 400
 HEIGHT = 500
@@ -29,7 +31,9 @@ def main():
     playerCar = Car(RED, 20, 30)
     playerCar.rect.x = WIDTH/2
     playerCar.rect.y = 450
+    sprite1 = Chicken(16, 16)
     all_sprites_list.add(playerCar)
+    all_sprites_list.add(sprite1)
 
     while carryOn:
         for event in pygame.event.get(): # User did something
@@ -46,12 +50,11 @@ def main():
         if keys[pygame.K_RIGHT] and playerCar.rect.x < (WIDTH - 20):
             playerCar.moveRight(5)
 
-            # First, clear the screen to white.
-        screen.fill(WHITE)
-            #The you can draw different shapes and lines or add text to your background stage.
-        pygame.draw.rect(screen, RED, [55, 200, 100, 70],0)
-        pygame.draw.line(screen, GREEN, [0, 0], [100, 100], 5)
-        pygame.draw.ellipse(screen, BLACK, [20,20,250,100], 2)
+        sprite1.fall(1)
+
+
+        screen.fill(MCYELLOW)
+
 
         all_sprites_list.update()
 

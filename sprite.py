@@ -33,3 +33,23 @@ class Car(pygame.sprite.Sprite):
 
     def moveLeft(self, pixels):
         self.rect.x -= pixels
+
+
+class Chicken(pygame.sprite.Sprite):
+    def __init__(self, width, height):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+
+        # Pass in the color of the car, and its x and y position, width and height.
+        # Set the background color and set it to be transparent
+        self.image = pygame.Surface([width, height])
+        self.image.fill(WHITE)
+        self.image.set_colorkey(WHITE)
+
+        # Draw the car (a rectangle!)
+        self.image = pygame.image.load("chickenSmall.png").convert_alpha()
+
+        self.rect = self.image.get_rect()
+
+    def fall(self, pixels):
+        self.rect.y += pixels
