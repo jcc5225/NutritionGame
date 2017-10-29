@@ -133,6 +133,11 @@ def main():
             bad_food.remove(food)
             all_sprites_list.remove(food)
 
+        collision_list = pygame.sprite.spritecollide(player, good_food, False)
+        for food in collision_list:
+            obesityLevel -= 1
+            good_food.remove(food)
+            all_sprites_list.remove(food)
 
         screen.fill(MCYELLOW)
 
