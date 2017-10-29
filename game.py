@@ -22,6 +22,7 @@ HEIGHT = 300
 def main():
     pygame.init()
 
+    obesityLevel = 5
     flagger = 30
     flag2 = 0
 
@@ -37,6 +38,9 @@ def main():
     subtitle = pygame.image.load('images/Subtitle.png')
 
     all_sprites_list = pygame.sprite.Group()
+
+    font = pygame.font.Font(None, 15)
+    text = font.render("HEALTH", 1, (10, 10, 10))
 
     player = Player(15, 25)
     player.rect.x = WIDTH/2
@@ -126,7 +130,12 @@ def main():
 
 
         screen.fill(MCYELLOW)
-        pygame.draw.rect(screen, BROWN, [0, 270, WIDTH, 270],0)
+
+
+        screen.blit(text, (WIDTH - 100,0))
+        pygame.draw.rect(screen, BLACK, [WIDTH - 50, 1, obesityLevel*5, 6])
+
+        pygame.draw.rect(screen, BROWN, [0, 270, WIDTH, 30],0)
         all_sprites_list.update()
         all_sprites_list.draw(screen)
         pygame.display.flip()

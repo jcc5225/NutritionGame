@@ -30,7 +30,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += pixels
 
     def jump(self, pixels):
-        self.rect.y -= pixels	
+        self.rect.y -= pixels
 
     def moveLeft(self, pixels):
         self.rect.x -= pixels
@@ -48,7 +48,7 @@ class Chicken(pygame.sprite.Sprite):
         self.image.set_colorkey(WHITE)
 
         # Draw the car (a rectangle!)
-        self.image = pygame.image.load("chickenSmall.png").convert_alpha()
+        self.image = pygame.image.load("images/chickenSmall.png").convert_alpha()
 
         self.rect = self.image.get_rect()
 
@@ -64,7 +64,7 @@ class Fries(pygame.sprite.Sprite):
         self.image.fill(MCYELLOW)
         self.image.set_colorkey(MCYELLOW)
 
-        self.image = pygame.image.load("FriesSprite.png").convert_alpha()
+        self.image = pygame.image.load("images/FriesSprite.png").convert_alpha()
 
         self.rect = self.image.get_rect()
 
