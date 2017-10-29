@@ -16,7 +16,6 @@ BROWN = (153, 76, 0)
 WIDTH = 700
 HEIGHT = 300
 
-playerScore = 0
 
 
 
@@ -30,6 +29,8 @@ def main():
     carryOn = True
 
     clock = pygame.time.Clock()
+
+    title = pygame.image.load('images/StartLogo.png')
 
     all_sprites_list = pygame.sprite.Group()
 
@@ -58,6 +59,7 @@ def main():
 
 
         screen.fill(MCYELLOW)
+        screen.blit(title, (110, 75))
         pygame.draw.rect(screen, BROWN, [0, 270, WIDTH, 270],0)
         all_sprites_list.update()
         all_sprites_list.draw(screen)

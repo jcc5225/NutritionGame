@@ -21,7 +21,7 @@ class Player(pygame.sprite.Sprite):
         self.image.set_colorkey(WHITE)
 
         # Instead we could load a proper pciture of a car...
-        self.image = pygame.image.load("BoySprite3.png").convert_alpha()
+        self.image = pygame.image.load("images/BoySprite3.png").convert_alpha()
 
         # Fetch the rectangle object that has the dimensions of the image.
         self.rect = self.image.get_rect()
