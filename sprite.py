@@ -28,8 +28,8 @@ class Player(pygame.sprite.Sprite):
 
     def moveRight(self, pixels):
         self.rect.x += pixels
-		
-	def jump(self,pixels):
+
+    def jump(self, pixels):
         self.rect.y -= pixels	
 
     def moveLeft(self, pixels):

@@ -22,6 +22,9 @@ HEIGHT = 300
 def main():
     pygame.init()
 
+    flagger = 30
+    flag2 = 0
+
     size = (WIDTH, HEIGHT)
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("Nutrition Game")
@@ -31,6 +34,7 @@ def main():
     clock = pygame.time.Clock()
 
     title = pygame.image.load('images/StartLogo.png')
+    subtitle = pygame.image.load('images/Subtitle.png')
 
     all_sprites_list = pygame.sprite.Group()
 
@@ -42,10 +46,10 @@ def main():
     while carryOn:
         for event in pygame.event.get(): # User did something
             if event.type == pygame.QUIT: # If user clicked close
-                carryOn = False
+                pygame.quit()
             elif event.type==pygame.KEYDOWN:
                 if event.key==pygame.K_x: #Pressing 'x' Key will quit
-                     carryOn=False
+                     pygame.quit()
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and player.rect.x > 0:
@@ -73,6 +77,7 @@ def main():
 
         screen.fill(MCYELLOW)
         screen.blit(title, (110, 75))
+        screen.blit(subtitle, (200, 130))
         pygame.draw.rect(screen, BROWN, [0, 270, WIDTH, 270],0)
         all_sprites_list.update()
         all_sprites_list.draw(screen)
@@ -82,6 +87,7 @@ def main():
 
     carryOn = True
     player.rect.x = 0
+    direction = 1   #tracks direction character faces
     while carryOn:
 
         for event in pygame.event.get(): # User did something
@@ -94,6 +100,15 @@ def main():
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and player.rect.x > 0:
             player.moveLeft(4)
+            if direction > 0:
+                player.image = pygame.transform.flip(player.image, True, False)
+                direction = -1
+
+        if keys[pygame.K_RIGHT]:
+            player.moveRight(4)
+            if direction < 0:
+                player.image = pygame.transform.flip(player.image, True, False)
+                direction = 1
 
         if keys[pygame.K_UP] and player.rect.x > 0 and flag2 == 0:
             flag2 = 1
@@ -108,8 +123,7 @@ def main():
             flagger = 30
             flag2 = 0
 
-        if keys[pygame.K_RIGHT]:
-            player.moveRight(4)
+
 
         screen.fill(MCYELLOW)
         pygame.draw.rect(screen, BROWN, [0, 270, WIDTH, 270],0)
