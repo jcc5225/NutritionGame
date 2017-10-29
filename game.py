@@ -49,10 +49,23 @@ def main():
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and player.rect.x > 0:
-            player.moveLeft(5)
+            player.moveLeft(4)
+
+        if keys[pygame.K_UP] and player.rect.x > 0 and flag2 == 0:
+            flag2 = 1
+
+        if flagger <= 30 and flagger > 15 and flag2 == 1:
+            flagger -= 1
+            player.jump(5)
+        elif flagger <= 15 and flagger != 0 and flag2 == 1:
+            flagger -= 1
+            player.jump(-5)
+        elif flagger == 0 and flag2 == 1:
+            flagger = 30
+            flag2 = 0
 
         if keys[pygame.K_RIGHT]:
-            player.moveRight(5)
+            player.moveRight(4)
 
         if player.rect.x >= WIDTH - 15:
             carryOn = False
@@ -80,11 +93,23 @@ def main():
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and player.rect.x > 0:
-            player.moveLeft(5)
+            player.moveLeft(4)
 
-        if keys[pygame.K_RIGHT] and player.rect.x <= WIDTH-15:
-            player.moveRight(5)
+        if keys[pygame.K_UP] and player.rect.x > 0 and flag2 == 0:
+            flag2 = 1
 
+        if flagger <= 30 and flagger > 15 and flag2 == 1:
+            flagger -= 1
+            player.jump(5)
+        elif flagger <= 15 and flagger != 0 and flag2 == 1:
+            flagger -= 1
+            player.jump(-5)
+        elif flagger == 0 and flag2 == 1:
+            flagger = 30
+            flag2 = 0
+
+        if keys[pygame.K_RIGHT]:
+            player.moveRight(4)
 
         screen.fill(MCYELLOW)
         pygame.draw.rect(screen, BROWN, [0, 270, WIDTH, 270],0)
