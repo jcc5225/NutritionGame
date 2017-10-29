@@ -7,10 +7,10 @@ RED = ( 255, 0, 0)
 MCYELLOW = ( 226, 179, 9)
 
 
-class Car(pygame.sprite.Sprite):
+class Player(pygame.sprite.Sprite):
     #This class represents a car. It derives from the "Sprite" class in Pygame.
 
-    def __init__(self, color, width, height):
+    def __init__(self, width, height):
         # Call the parent class (Sprite) constructor
         super().__init__()
 
@@ -20,11 +20,8 @@ class Car(pygame.sprite.Sprite):
         self.image.fill(WHITE)
         self.image.set_colorkey(WHITE)
 
-        # Draw the car (a rectangle!)
-        pygame.draw.rect(self.image, color, [0, 0, width, height])
-
         # Instead we could load a proper pciture of a car...
-        # self.image = pygame.image.load("car.png").convert_alpha()
+        self.image = pygame.image.load("BoySprite3.png").convert_alpha()
 
         # Fetch the rectangle object that has the dimensions of the image.
         self.rect = self.image.get_rect()
