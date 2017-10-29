@@ -85,6 +85,7 @@ def main():
             carryOn = False
 
 
+
         screen.fill(MCYELLOW)
         screen.blit(title, (110, 75))
         screen.blit(subtitle, (200, 130))
@@ -175,16 +176,26 @@ def main():
 
         collision_list = pygame.sprite.spritecollide(player,bad_foods_list,False)
         for food in collision_list:
-            obesityLevel  += 1
+            obesityLevel  += 3
             all_sprites_list.remove(food)
             bad_foods_list.remove(food)
 
 
         collision_list = pygame.sprite.spritecollide(player,good_foods_list,False)
         for food in collision_list:
-            obesityLevel  -= 1
+            obesityLevel  -= 3
             all_sprites_list.remove(food)
             good_foods_list.remove(food)
+
+        if player.rect.x >= WIDTH - 15:
+            carryOn = False
+
+        if obesityLevel <= 0 or obesityLevel >= 10:
+            if obesityLevel<=0:
+                print ("You ate too little.")
+            if obesityLevel>=10:
+                print ("You ate too much. Try eating healthier foods.")
+            carryOn = False
 
         screen.fill(MCYELLOW)
 
