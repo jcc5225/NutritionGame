@@ -21,7 +21,7 @@ class Player(pygame.sprite.Sprite):
         self.image.set_colorkey(WHITE)
 
         # Instead we could load a proper pciture of a car...
-        self.image = pygame.image.load("BoySprite3.png").convert_alpha()
+        self.image = pygame.image.load("images/BoySprite3.png").convert_alpha()
 
         # Fetch the rectangle object that has the dimensions of the image.
         self.rect = self.image.get_rect()
@@ -48,7 +48,7 @@ class Chicken(pygame.sprite.Sprite):
         self.image.set_colorkey(WHITE)
 
         # Draw the car (a rectangle!)
-        self.image = pygame.image.load("chickenSmall.png").convert_alpha()
+        self.image = pygame.image.load("images/chickenSmall.png").convert_alpha()
 
         self.rect = self.image.get_rect()
 
@@ -67,7 +67,7 @@ class Burger(pygame.sprite.Sprite):
         self.image.set_colorkey(WHITE)
 
         # Draw the car (a rectangle!)
-        self.image = pygame.image.load("burger.png").convert_alpha()
+        self.image = pygame.image.load("images/burger.png").convert_alpha()
 
         self.rect = self.image.get_rect()
 
@@ -86,7 +86,7 @@ class apple(pygame.sprite.Sprite):
         self.image.set_colorkey(WHITE)
 
         # Draw the car (a rectangle!)
-        self.image = pygame.image.load("apple.png").convert_alpha()
+        self.image = pygame.image.load("images/apple.png").convert_alpha()
 
         self.rect = self.image.get_rect()
 
@@ -101,7 +101,7 @@ class Fries(pygame.sprite.Sprite):
         self.image.fill(MCYELLOW)
         self.image.set_colorkey(MCYELLOW)
 
-        self.image = pygame.image.load("FriesSprite.png").convert_alpha()
+        self.image = pygame.image.load("images/FriesSprite.png").convert_alpha()
 
         self.rect = self.image.get_rect()
 
@@ -116,7 +116,7 @@ class Spinach(pygame.sprite.Sprite):
         self.image.fill(MCYELLOW)
         self.image.set_colorkey(MCYELLOW)
 
-        self.image = pygame.image.load("spinach2.png").convert_alpha()
+        self.image = pygame.image.load("images/spinach2.png").convert_alpha()
 
         self.rect = self.image.get_rect()
 
@@ -131,7 +131,7 @@ class pear(pygame.sprite.Sprite):
         self.image.fill(MCYELLOW)
         self.image.set_colorkey(MCYELLOW)
 
-        self.image = pygame.image.load("pear2.png").convert_alpha()
+        self.image = pygame.image.load("images/pear2.png").convert_alpha()
 
         self.rect = self.image.get_rect()
 
@@ -146,7 +146,7 @@ class cookie(pygame.sprite.Sprite):
         self.image.fill(MCYELLOW)
         self.image.set_colorkey(MCYELLOW)
 
-        self.image = pygame.image.load("cookie2.png").convert_alpha()
+        self.image = pygame.image.load("images/cookie2.png").convert_alpha()
 
         self.rect = self.image.get_rect()
 
@@ -161,7 +161,7 @@ class cherry(pygame.sprite.Sprite):
         self.image.fill(MCYELLOW)
         self.image.set_colorkey(MCYELLOW)
 
-        self.image = pygame.image.load("cherry2.png").convert_alpha()
+        self.image = pygame.image.load("images/cherry2.png").convert_alpha()
 
         self.rect = self.image.get_rect()
 

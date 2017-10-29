@@ -38,15 +38,15 @@ def main():
 
     clock = pygame.time.Clock()
 
-    title = pygame.image.load('StartLogo.png')
-    subtitle = pygame.image.load('Subtitle.png')
+    title = pygame.image.load('images/StartLogo.png')
+    subtitle = pygame.image.load('images/Subtitle.png')
 
     all_sprites_list = pygame.sprite.Group()
     bad_foods_list = pygame.sprite.Group()
     good_foods_list = pygame.sprite.Group()
 
     font = pygame.font.Font(None, 15)
-    text = font.render("HEALTH", 1, (10, 10, 10))
+    text = font.render("WEIGHT", 1, (10, 10, 10))
 
     player = Player(15, 25)
     player.rect.x = WIDTH/2
@@ -149,8 +149,11 @@ def main():
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and player.rect.x > 0:
             player.moveLeft(4)
+            if direction > 0:
+                player.image = pygame.transform.flip(player.image, True, False)
+                direction = -1
 
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_RIGHT] and player.rect.x < WIDTH - 15:
             player.moveRight(4)
             if direction < 0:
                 player.image = pygame.transform.flip(player.image, True, False)
@@ -169,8 +172,19 @@ def main():
             flagger = 30
             flag2 = 0
 
-        if keys[pygame.K_RIGHT]:
-            player.moveRight(4)
+
+        collision_list = pygame.sprite.spritecollide(player,bad_foods_list,False)
+        for food in collision_list:
+            obesityLevel  += 1
+            all_sprites_list.remove(food)
+            bad_foods_list.remove(food)
+
+
+        collision_list = pygame.sprite.spritecollide(player,good_foods_list,False)
+        for food in collision_list:
+            obesityLevel  -= 1
+            all_sprites_list.remove(food)
+            good_foods_list.remove(food)
 
         screen.fill(MCYELLOW)
 
