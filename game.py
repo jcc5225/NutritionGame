@@ -40,7 +40,7 @@ def main():
     all_sprites_list = pygame.sprite.Group()
 
     font = pygame.font.Font(None, 15)
-    text = font.render("HEALTH", 1, (10, 10, 10))
+    text = font.render("WEIGHT", 1, (10, 10, 10))
 
     player = Player(15, 25)
     player.rect.x = WIDTH/2
@@ -108,7 +108,7 @@ def main():
                 player.image = pygame.transform.flip(player.image, True, False)
                 direction = -1
 
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_RIGHT] and player.rect.x < WIDTH - 15:
             player.moveRight(4)
             if direction < 0:
                 player.image = pygame.transform.flip(player.image, True, False)
@@ -127,6 +127,11 @@ def main():
             flagger = 30
             flag2 = 0
 
+        collision_list = pygame.sprite.spritecollide(player,bad_food,False)
+        for food in collision_list:
+            obesityLevel += 1
+            bad_food.remove(food)
+            all_sprites_list.remove(food)
 
 
         screen.fill(MCYELLOW)
