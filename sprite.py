@@ -4,6 +4,7 @@ BLACK = ( 0, 0, 0)
 WHITE = ( 255, 255, 255)
 GREEN = ( 0, 255, 0)
 RED = ( 255, 0, 0)
+MCYELLOW = ( 226, 179, 9)
 
 
 class Car(pygame.sprite.Sprite):
@@ -48,6 +49,22 @@ class Chicken(pygame.sprite.Sprite):
 
         # Draw the car (a rectangle!)
         self.image = pygame.image.load("chickenSmall.png").convert_alpha()
+
+        self.rect = self.image.get_rect()
+
+    def fall(self, pixels):
+        self.rect.y += pixels
+
+
+class Fries(pygame.sprite.Sprite):
+    def __init__(self, width, height):
+        super().__init__()
+
+        self.image = pygame.Surface([width, height])
+        self.image.fill(MCYELLOW)
+        self.image.set_colorkey(MCYELLOW)
+
+        self.image = pygame.image.load("FriesSprite.png").convert_alpha()
 
         self.rect = self.image.get_rect()
 

@@ -1,8 +1,10 @@
 #!/usr/bin/python -tt
 
 import pygame
+import random
 from sprite import Car
 from sprite import Chicken
+from sprite import Fries
 
 BLACK = ( 0, 0, 0)
 WHITE = ( 255, 255, 255)
@@ -32,15 +34,19 @@ def main():
     playerCar.rect.x = WIDTH/2
     playerCar.rect.y = 450
     sprite1 = Chicken(16, 16)
+    sprite1.rect.x , sprite1.rect.y = random.randrange(0,WIDTH-16), 0
+    sprite2 = Fries(6, 10)
+    sprite2.rect.x, sprite2.rect.y = random.randrange(0,WIDTH-6), 0
     all_sprites_list.add(playerCar)
     all_sprites_list.add(sprite1)
+    all_sprites_list.add(sprite2)
 
     while carryOn:
         for event in pygame.event.get(): # User did something
             if event.type == pygame.QUIT: # If user clicked close
                 carryOn = False
             elif event.type==pygame.KEYDOWN:
-                if event.key==pygame.K_x: #Pressing the x Key will quit the game
+                if event.key==pygame.K_x: #Pressing 'x' Key will quit
                      carryOn=False
 
         keys = pygame.key.get_pressed()
@@ -51,6 +57,7 @@ def main():
             playerCar.moveRight(5)
 
         sprite1.fall(1)
+        sprite2.fall(2)
 
 
         screen.fill(MCYELLOW)
