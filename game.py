@@ -8,12 +8,15 @@ WHITE = ( 255, 255, 255)
 GREEN = ( 0, 255, 0)
 RED = ( 255, 0, 0)
 
+WIDTH = 400
+HEIGHT = 500
+
 
 
 def main():
     pygame.init()
 
-    size = (700, 500)
+    size = (WIDTH, HEIGHT)
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("Nutrition Game")
 
@@ -24,7 +27,7 @@ def main():
     all_sprites_list = pygame.sprite.Group()
 
     playerCar = Car(RED, 20, 30)
-    playerCar.rect.x = 350
+    playerCar.rect.x = WIDTH/2
     playerCar.rect.y = 450
     all_sprites_list.add(playerCar)
 
@@ -37,11 +40,12 @@ def main():
                      carryOn=False
 
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.K_LEFT] and playerCar.rect.x > 0:
+
             playerCar.moveLeft(5)
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_RIGHT] and playerCar.rect.x < (WIDTH - 20):
             playerCar.moveRight(5)
-            
+
             # First, clear the screen to white.
         screen.fill(WHITE)
             #The you can draw different shapes and lines or add text to your background stage.
